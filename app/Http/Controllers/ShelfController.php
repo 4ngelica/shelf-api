@@ -23,16 +23,44 @@ class ShelfController extends Controller
   }
 
   /**
-  * Handle the GET request by returning
-  * a json with 12 items of the top
-  * Selling products into "Perfume"
-  * (1000001) category.
+  * Responds to a GET request into the /product/
+  * endpoint with the 12 top selling products
   *
   * @return JsonResponse
   * @author Angélica Nunes
   */
-  public function handle(): JsonResponse
+  public function index(): JsonResponse
   {
+    $shelf_list = $this->handle();
+    return response()->json($shelf_list, 201);
+  }
+
+  /**
+  * Responds to a GET request into the
+  * /product/{rate} endpoint with the
+  * product classified in this position
+  *
+  * @return JsonResponse
+  * @author Angélica Nunes
+  */
+  public function show($rate): JsonResponse
+  {
+    $shelf_item = $this->handle()[$rate];
+    return response()->json($shelf_item, 201);
+  }
+
+  /**
+  * Sends a GET request to the Vtex Search API
+  * and returns an array with the 12 top selling
+  * products into "Perfume" (1000001) category.
+  *
+  * @return JsonResponse
+  * @author Angélica Nunes
+  */
+  public function handle(): Array
+  {
+    $shelf_list = [];
+    $i = 1;
 
     $response = Http::withHeaders($this->shelf->header())
       ->get(
@@ -41,26 +69,19 @@ class ShelfController extends Controller
       );
 
     $products = collect(json_decode($response, true));
-    $shelf_list = [];
 
     foreach ($products as $product => $value) {
+      
       array_push($shelf_list, [
         'productName' => Arr::get($products, $product . '.productName'),
+        'rate' => $i,
         'productId' => Arr::get($products, $product . '.productId'),
         'brand' => Arr::get($products, $product . '.brand'),
       ]);
+
+      $i++;
     }
 
-    return response()->json($shelf_list, 201);
-  }
-
-  public function index(): JsonResponse
-  {
-
-  }
-
-  public function show($rate): JsonResponse
-  {
-
+    return $shelf_list;
   }
 }
