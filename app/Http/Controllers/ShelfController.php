@@ -45,7 +45,11 @@ class ShelfController extends Controller
   */
   public function show($rate): JsonResponse
   {
-    $shelf_item = $this->handle()[$rate];
+    if($rate < 1 || $rate > 12){
+      return response()->json(['error'=>'The requested resource does not exist.'], 404);
+    }
+
+    $shelf_item = $this->handle()[$rate-1];
     return response()->json($shelf_item, 201);
   }
 
@@ -71,7 +75,7 @@ class ShelfController extends Controller
     $products = collect(json_decode($response, true));
 
     foreach ($products as $product => $value) {
-      
+
       array_push($shelf_list, [
         'productName' => Arr::get($products, $product . '.productName'),
         'rate' => $i,
