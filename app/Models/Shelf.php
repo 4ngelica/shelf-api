@@ -32,8 +32,9 @@ class Shelf extends Model
   public function queryParams(): array
   {
     return [
-      'Accept' => 'application/json',
-      'Content-Type' => 'application/json',
+      '_from'=>'0',
+      '_to' => '11',
+      'fq'=>'C:/1000001/'
     ];
   }
 
