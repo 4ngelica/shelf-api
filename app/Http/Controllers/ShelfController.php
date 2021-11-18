@@ -12,7 +12,6 @@ use App\Models\Shelf;
 
 class ShelfController extends Controller
 {
-  protected $model;
 
   /**
   * ShelfController constructor.
@@ -20,7 +19,7 @@ class ShelfController extends Controller
   */
   public function __construct(Shelf $shelf)
   {
-    $this->model = $shelf;
+    $this->shelf = $shelf;
   }
 
   /**
@@ -35,10 +34,10 @@ class ShelfController extends Controller
   public function handle(): JsonResponse
   {
 
-    $response = Http::withHeaders($this->model->header())
+    $response = Http::withHeaders($this->shelf->header())
       ->get(
-        $this->model->url(),
-        $this->model->queryParams()
+        $this->shelf->url(),
+        $this->shelf->queryParams()
       );
 
     $products = collect(json_decode($response, true));
