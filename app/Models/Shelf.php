@@ -24,7 +24,7 @@ class Shelf extends Model
   }
 
   /**
-  * Returns a array with the query params.
+  * Returns an array with the query params.
   *
   * @return array
   * @author Angélica Nunes
