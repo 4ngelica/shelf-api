@@ -15,7 +15,7 @@ Ao receber a requisição, a API dispara uma requisição também do tipo GET pa
 - Laravel 8
 
 ## :pushpin: Documentação
-Acesse a documentação <b>aqui</b>.
+Acesse a documentação <b><a href="http://shelf-api-challenge.herokuapp.com/api/docs">aqui</a></b>.
 
 ## :pushpin: Modelagem do problema
 ### Consumo da API da VTEX
@@ -48,7 +48,6 @@ Como o intuito do projeto é realizar uma API apenas para leitura (não é poss�
 ## :pushpin: Escolha da stack
 
 Foi utilizado o framework Laravel por ter uma vasta gama de funcionalidades built-in para APIS e também por deixar o projeto bem estruturado em relaçao ao MVC. Também seria interessante utlizar o Lumen (um micro framework do Laravel), visto que deixaria o projeto mais enxuto, trazendo apenas as dependências necessárias para a criação da API.
-
 
 ## :pushpin: Próximos passos
 - Criação de versionamento da API;
