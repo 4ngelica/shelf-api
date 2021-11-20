@@ -1,7 +1,7 @@
 <h3 align="center">Shelf API</h3>
 
 <p align="center">
-   API baseada na construção de uma prateleira de produtos tendo a API de busca da VTEX como base de dados.
+   API baseada na construção de uma prateleira de produtos utilizando a API de busca da VTEX como base de dados.
 </p>
 
 ## :pushpin: Sobre
@@ -17,7 +17,7 @@ Ao receber a requisição, a API dispara uma requisição também do tipo GET pa
 ## :pushpin: Documentação
 Acesse a documentação <b>aqui</b>.
 
-## :pushpin: Execução
+## :pushpin: Modelagem do problema
 ### Consumo da API da VTEX
 
 A ordenação foi realizada diretamente na requisição da API de busca. Foi utilizado o parâmetro O=OrderByPriceDESC, enviado como filtro na URL da requisição:
@@ -28,19 +28,22 @@ Além disso, o parâmetro de busca foi omitido na URL, para não limitar a query
 Para limitar a busca em 12 resultados, foram utilizados os parâmetros _from e _to.
 
 ### Tratamento dos dados
-Para otimizar o tratamento de dados e não comprometer a velocidade da resposta, foi definida uma lista de parâmetros essenciais para cada produto durante a geração da prateleira. A escolha desses parâmetros foi baseada na interface de prateleira da Época Cosméticos:
+Para otimizar o tratamento de dados e não comprometer a velocidade da resposta, foi definida uma lista de parâmetros essenciais para cada produto durante a criação da prateleira. A escolha desses parâmetros foi baseada na interface de prateleira da Época Cosméticos:
 
+- item
 - productName
-- productId
 - brand
-- Price
-- ListPrice
 - imageUrl
+- pricesPerSize
+  - {size}
+      - Price
+      - ListPrice
 
-Visto que muitas informações foram omitidas nesse processo, foi implementado um segundo endpoint, que trás uma resposta mais detalhada para cada produto. O parâmetro item foi utilizado para realizar essa requisição e indica também a classificação do produto dentro da lista.
+Visto que muitas informações foram omitidas nesse processo, foi implementado um segundo endpoint, que trás uma resposta mais detalhada para cada produto. O parâmetro 'item' define esse endpoint para realizar a requisição e indica também a classificação do produto dentro da lista.
 
 ## :pushpin: Instalação
 
 ## :pushpin: Escolha da stack
 
 ## :pushpin: Próximos passos
+## :pushpin: Referências
