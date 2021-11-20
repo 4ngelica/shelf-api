@@ -41,9 +41,19 @@ Para otimizar o tratamento de dados e não comprometer a velocidade da resposta,
 
 Visto que muitas informações foram omitidas nesse processo, foi implementado um segundo endpoint, que trás uma resposta mais detalhada para cada produto. O parâmetro 'item' define esse endpoint para realizar a requisição e indica também a classificação do produto dentro da lista.
 
+Como o intuito do projeto é realizar uma API apenas para leitura (não é possível registrar novos produtos ou modificá-los), não foi criada uma rota de autenticação, visto que os dados não são sensíveis e nem restritos.
+
 ## :pushpin: Instalação
 
 ## :pushpin: Escolha da stack
 
+Foi utilizado o framework Laravel por ter uma vasta gama de funcionalidades built-in para APIS e também por deixar o projeto bem estruturado em relaçao ao MVC. Também seria interessante utlizar o Lumen (um micro framework do Laravel), visto que deixaria o projeto mais enxuto, trazendo apenas as dependências necessárias para a criação da API.
+
+
 ## :pushpin: Próximos passos
+- Criação de versionamento da API;
+
 ## :pushpin: Referências
+- https://laravel.com/docs/8.x
+- https://github.com/DarkaOnLine/L5-Swagger/wiki
+- https://swagger.io/docs/
