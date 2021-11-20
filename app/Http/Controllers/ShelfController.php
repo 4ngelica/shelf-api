@@ -101,10 +101,10 @@ class ShelfController extends Controller
         'item' => $increment,
         'productId' => Arr::get($products, $product . '.productId'),
         'brand' => Arr::get($products, $product . '.brand'),
-        'Price' => Arr::get($products, $product . '.ItemMetadataAttachment'),
-        'ListPrice' => Arr::get($products, $product . '.ItemMetadataAttachment'),
-        'Value' => Arr::get($products, $product . '.Installments'),
-        'imageUrl' => Arr::get($products, $product . '.images'),
+        'Price' => Arr::get($products, $product . '.items.2.sellers.0.commertialOffer.Price'),
+        'ListPrice' => Arr::get($products, $product . '.items.2.sellers.0.commertialOffer.ListPrice'),
+        'Value' => Arr::get($products, $product . '.items.0.sellers.0.commertialOffer.Price'),
+        'imageUrl' => Arr::get($products, $product . '.items.0.images.0.imageUrl'),
       ]);
 
       $increment++;
