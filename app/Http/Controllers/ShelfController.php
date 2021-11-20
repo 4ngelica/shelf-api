@@ -41,11 +41,23 @@ class ShelfController extends Controller
   }
 
   /**
-   * @OA\Get(
-   *     path="/product/{item}",
-   *     @OA\Response(response="201", description="Display item details.")
-   * )
-   */
+  * @OA\Get(
+  *     path="/product/{item}",
+  * summary="Find product by the shelf position",
+  *     description="Returns a single product with details",
+  *     @OA\Parameter(
+  *         description="Item to return",
+  *         in="path",
+  *         name="item",
+  *         required=true,
+  *         @OA\Schema(
+  *           type="integer",
+  *         )
+  *     ),
+  *     @OA\Response(response="201", description="Display product details."),
+  *     @OA\Response(response="404", description="The requested resource does not exist.")
+  * )
+  */
 
   /**
   * Responds to a GET request into the
