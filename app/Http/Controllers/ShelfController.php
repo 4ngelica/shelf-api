@@ -26,7 +26,7 @@ class ShelfController extends Controller
   /**
    * @OA\Get(
    *     path="/product",
-   *     @OA\Response(response="201", description="Display a the shelf list.")
+   *     @OA\Response(response="201", description="Display the shelf.")
    * )
    */
 
