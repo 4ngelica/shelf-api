@@ -7,7 +7,7 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
 
 /**
- * @OA\Server(url="http://localhost/api")
+ * @OA\Server(url="http://shelf-api-challenge.herokuapp.com/api/")
  * @OA\Info(title="Shelf API", version="0.0.1")
  */
 class Controller extends BaseController
