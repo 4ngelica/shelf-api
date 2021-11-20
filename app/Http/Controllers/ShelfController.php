@@ -24,11 +24,14 @@ class ShelfController extends Controller
   }
 
   /**
-   * @OA\Get(
-   *     path="/product",
-   *     @OA\Response(response="201", description="Displays the shelf.")
-   * )
-   */
+  * @OA\Get(
+  *   path="/product",
+  *   tags={"Shelf"},
+  *   summary="Displays the shelf",
+  *   description="This endpoint returns a json with the twelve best sellers in the perfume category.",
+  *   @OA\Response(response="200", description="Successful operation.")
+  * )
+  */
 
   /**
   * @return JsonResponse
@@ -37,25 +40,26 @@ class ShelfController extends Controller
   public function index(): JsonResponse
   {
     $shelf_list = $this->handleRequest();
-    return response()->json($shelf_list, 201);
+    return response()->json($shelf_list, 200);
   }
 
   /**
   * @OA\Get(
-  *     path="/product/{item}",
-  * summary="Find product by the shelf position",
-  *     description="Returns a single product with details",
-  *     @OA\Parameter(
-  *         description="Item to return",
-  *         in="path",
-  *         name="item",
-  *         required=true,
-  *         @OA\Schema(
-  *           type="integer",
-  *         )
-  *     ),
-  *     @OA\Response(response="201", description="Display product details."),
-  *     @OA\Response(response="404", description="The requested resource does not exist.")
+  *   path="/product/{item}",
+  *   tags={"Product details"},
+  *   summary="Find product by its shelf position",
+  *   description="This endpoint returns a json with a single product and all its details.",
+  *   @OA\Parameter(
+  *     description="Product to return",
+  *       in="path",
+  *       name="item",
+  *       required=true,
+  *       @OA\Schema(
+  *         type="integer",
+  *       )
+  *    ),
+  *    @OA\Response(response="200", description="Successful operation."),
+  *    @OA\Response(response="404", description="The requested resource does not exist.")
   * )
   */
 
@@ -123,7 +127,7 @@ class ShelfController extends Controller
         'productName' => Arr::get($products, $product . '.productName'),
         'brand' => Arr::get($products, $product . '.brand'),
         'imageUrl' => Arr::get($products, $product . '.items.0.images.0.imageUrl'),
-        'pricesPerSize' => ['hdhfushd' =>['hfsudhf'=>'hdhah', 'hdaushda'=>'hadhuah']],
+        'pricesPerSize' => [],
       ]);
 
       $items = Arr::get($products, $product . '.items');
