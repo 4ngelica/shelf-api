@@ -91,23 +91,31 @@ class ShelfController extends Controller
   */
   public function generateProductList($products): Array
   {
+    $prices = [];
     $shelf_list = [];
-    $increment = 1;
 
     foreach ($products as $product => $value) {
-
       array_push($shelf_list, [
+        'item' => $product+1,
         'productName' => Arr::get($products, $product . '.productName'),
-        'item' => $increment,
-        'productId' => Arr::get($products, $product . '.productId'),
         'brand' => Arr::get($products, $product . '.brand'),
-        'Price' => Arr::get($products, $product . '.items.2.sellers.0.commertialOffer.Price'),
-        'ListPrice' => Arr::get($products, $product . '.items.2.sellers.0.commertialOffer.ListPrice'),
-        'Value' => Arr::get($products, $product . '.items.0.sellers.0.commertialOffer.Price'),
         'imageUrl' => Arr::get($products, $product . '.items.0.images.0.imageUrl'),
+        'pricesPerSize' => ['hdhfushd' =>['hfsudhf'=>'hdhah', 'hdaushda'=>'hadhuah']],
       ]);
 
-      $increment++;
+      $items = Arr::get($products, $product . '.items');
+
+      for ($i=0; $i < count($items); $i++) {
+
+        array_push($prices, [
+          $items[$i]['name'] => [
+            'Price' => $items[$i]['sellers'][0]['commertialOffer']['Price'],
+            'ListPrice'=>$items[$i]['sellers'][0]['commertialOffer']['ListPrice']]
+        ]);
+      }
+
+      $shelf_list[$product]['pricesPerSize'] = $prices;
+      $prices =[];
     }
     return $shelf_list;
   }
