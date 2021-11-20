@@ -24,9 +24,13 @@ class ShelfController extends Controller
   }
 
   /**
-  * Responds to a GET request into the /product/
-  * endpoint with the 12 top selling products
-  *
+   * @OA\Get(
+   *     path="/product",
+   *     @OA\Response(response="201", description="Display a the shelf list.")
+   * )
+   */
+
+  /**
   * @return JsonResponse
   * @author Angélica Nunes
   */
@@ -35,6 +39,13 @@ class ShelfController extends Controller
     $shelf_list = $this->handleRequest();
     return response()->json($shelf_list, 201);
   }
+
+  /**
+   * @OA\Get(
+   *     path="/product/{item}",
+   *     @OA\Response(response="201", description="Display item details.")
+   * )
+   */
 
   /**
   * Responds to a GET request into the

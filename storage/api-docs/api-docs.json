@@ -1,0 +1,35 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Shelf API",
+        "version": "0.0.1"
+    },
+    "servers": [
+        {
+            "url": "http://localhost/api"
+        }
+    ],
+    "paths": {
+        "/product": {
+            "get": {
+                "responses": {
+                    "201": {
+                        "description": "Display a the shelf list."
+                    }
+                }
+            }
+        },
+        "/product/{item}": {
+            "get": {
+                "responses": {
+                    "201": {
+                        "description": "Display item details."
+                    }
+                }
+            }
+        }
+    },
+    "security": [
+        []
+    ]
+}
