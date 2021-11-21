@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Arr;
 use Illuminate\Http\JsonResponse;
@@ -25,14 +24,14 @@ class ShelfController extends Controller
 
 
   /**
-    * @OA\Get(
-    *   path="/product",
-    *   tags={"Shelf"},
-    *   summary="Displays the shelf",
-    *   description="This endpoint returns a json with the twelve best sellers in the perfume category.",
-    *   @OA\Response(response="200", description="Successful operation.")
-    * )
-    */
+  * @OA\Get(
+  *   path="/product",
+  *   tags={"Shelf"},
+  *   summary="Displays the shelf",
+  *   description="This endpoint returns a json with the twelve best sellers in the perfume category.",
+  *   @OA\Response(response="200", description="Successful operation.")
+  * )
+  */
 
   /**
   * @return JsonResponse
@@ -41,7 +40,7 @@ class ShelfController extends Controller
   public function index(): JsonResponse
   {
     $shelf_list = $this->handleRequest();
-    return response()->json($shelf_list, 200);
+    return response()->json($shelf_list, JsonResponse::HTTP_OK);
   }
 
   /**
@@ -59,7 +58,7 @@ class ShelfController extends Controller
   *         type="integer",
   *       )
   *    ),
-  *    @OA\Response(response="200", description="Successful operation."),
+  *    @OA\Response(response="201", description="Successful operation."),
   *    @OA\Response(response="404", description="The requested resource does not exist.")
   * )
   */
@@ -76,14 +75,15 @@ class ShelfController extends Controller
   public function show(Int $item): JsonResponse
   {
     try{
-      $shelf_item = $this->handleRequest($item);
-
-      return response()->json($shelf_item, 201);
-    } catch (Exception $e) {
+        $shelf_item = $this->handleRequest($item);
         return response()->json(
-          ['error' => 'The requested resource does not exist.'],
-          JsonResponse::HTTP_NOT_FOUND);
-      }
+        $shelf_item, JsonResponse::HTTP_CREATED);
+
+    }catch (Exception $e) {
+      return response()->json(
+        ['error' => 'The requested resource does not exist.'],
+        JsonResponse::HTTP_NOT_FOUND);
+    }
   }
 
   /**
@@ -142,11 +142,11 @@ class ShelfController extends Controller
           $items[$i]['name'] => [
             'Price' => $items[$i]['sellers'][0]['commertialOffer']['Price'],
             'ListPrice'=>$items[$i]['sellers'][0]['commertialOffer']['ListPrice']]
-        ]);
-      }
+          ]);
+        }
 
-      $shelf_list[$product]['pricesPerSize'] = $prices;
-      $prices =[];
+        $shelf_list[$product]['pricesPerSize'] = $prices;
+        $prices =[];
     }
     return $shelf_list;
   }
