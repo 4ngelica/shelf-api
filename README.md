@@ -26,7 +26,10 @@ A ordenação foi realizada diretamente na requisição da API de busca. Foi uti
 http://epocacosmeticos.vtexcommercestable.com.br/api/catalog_system/pub/products/search/?O=OrderByTopSaleDESC
 
 Além disso, o parâmetro de busca foi omitido na URL, para não limitar a query da busca. A alternativa utilizada foi enviar no body da requisição o parâmetro <i>'fq'</i>, que indica a categoria dos produtos buscados. Portanto, a busca foi realizada dentre os produtos classificados na categoria Perfumes (1000001).
+
 Para limitar a busca em 12 resultados, foram utilizados os parâmetros <i>_from</i> e <i>_to</i>.
+
+<center><img width="80%" src="https://raw.githubusercontent.com/4ngelica/shelf-api/master/public/assets/VennDiagram.jpg"></center>
 
 ### Tratamento dos dados
 Para otimizar o tratamento de dados e não comprometer a velocidade da resposta, foi definida uma lista de parâmetros essenciais para cada produto durante a criação da prateleira. A escolha desses parâmetros foi baseada na interface de prateleira da Época Cosméticos:
