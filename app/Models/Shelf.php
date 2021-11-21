@@ -37,7 +37,7 @@ class Shelf extends Model
       'fq'=>'C:/1000001/'
     ];
   }
-
+  
   /**
   * Returns a string with the Vtex search API endpoint.
   *
