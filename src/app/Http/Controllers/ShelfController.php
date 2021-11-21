@@ -112,10 +112,10 @@ class ShelfController extends Controller
             'Price' => $items[$i]['sellers'][0]['commertialOffer']['Price'],
             'ListPrice'=>$items[$i]['sellers'][0]['commertialOffer']['ListPrice']]
           ]);
-        }
+      }
 
-        $shelf_list[$product]['pricesPerSize'] = $prices;
-        $prices =[];
+      $shelf_list[$product]['pricesPerSize'] = $prices;
+      $prices =[];
     }
     return $shelf_list;
   }
