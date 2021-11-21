@@ -25,7 +25,7 @@ class ShelfController extends Controller
 
   /**
   * @OA\Get(
-  *   path="/product",
+  *   path="/shelf",
   *   tags={"Shelf"},
   *   summary="Displays the shelf",
   *   description="This endpoint returns a json with the twelve best sellers in the perfume category.",
@@ -45,8 +45,8 @@ class ShelfController extends Controller
 
   /**
   * @OA\Get(
-  *   path="/product/{item}",
-  *   tags={"Product details"},
+  *   path="/shelf/{item}",
+  *   tags={"Shelf details"},
   *   summary="Find product by its position in the shelf",
   *   description="This endpoint returns a json with a single product and all its details.",
   *   @OA\Parameter(
@@ -65,7 +65,7 @@ class ShelfController extends Controller
 
   /**
   * Responds to a GET request into the
-  * /product/{item} endpoint with the
+  * /shelf/{item} endpoint with the
   * product classified in this position
   *
   * @return JsonResponse
