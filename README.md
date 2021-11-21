@@ -75,5 +75,6 @@ Também seria interessante utilizar o Lumen (um micro framework do Laravel), vis
 
 ## :pushpin: Referências
 - https://laravel.com/docs/8.x
+- https://github.com/laravel/laravel
 - https://github.com/DarkaOnLine/L5-Swagger/wiki
 - https://swagger.io/docs/
