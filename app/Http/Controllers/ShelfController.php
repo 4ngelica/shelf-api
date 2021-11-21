@@ -105,7 +105,7 @@ class ShelfController extends Controller
 
     $products = collect(json_decode($response, true));
 
-    if ($item != null || $item == 0) {
+    if (!is_null($item)) {
       return $products[$item-1];
     }else {
       return self::generateProductList($products);
