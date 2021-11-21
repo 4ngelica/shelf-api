@@ -15,6 +15,7 @@ Ao receber a requisição, a API dispara uma requisição também do tipo GET pa
 - Laravel 8
 
 ## :pushpin: Documentação
+A documentação da API foi construída através da ferramenta Swagger e o deploy do ambiente de testes foi feito no Heroku.
 Acesse a documentação <b><a href="http://shelf-api-challenge.herokuapp.com/api/docs">aqui</a></b>.
 
 ## :pushpin: Modelagem do problema
