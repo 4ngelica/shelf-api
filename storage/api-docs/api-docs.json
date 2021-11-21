@@ -11,7 +11,7 @@
         }
     ],
     "paths": {
-        "/product": {
+        "/shelf": {
             "get": {
                 "tags": [
                     "Shelf"
@@ -25,10 +25,10 @@
                 }
             }
         },
-        "/product/{item}": {
+        "/shelf/{item}": {
             "get": {
                 "tags": [
-                    "Product details"
+                    "Shelf details"
                 ],
                 "summary": "Find product by its position in the shelf",
                 "description": "This endpoint returns a json with a single product and all its details.",
