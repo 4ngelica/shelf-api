@@ -15,5 +15,5 @@ use App\Http\Controllers\ShelfController;
 */
 
 Route::get('handle/{item?}', [ShelfController::class, 'handleRequest'])->name('handle');
-Route::get('product', [ShelfController::class, 'index'])->name('product.index');
-Route::get('product/{item}', [ShelfController::class, 'show'])->name('product.show');
+Route::get('shelf', [ShelfController::class, 'index'])->name('shelf.index');
+Route::get('shelf/{item}', [ShelfController::class, 'show'])->name('shelf.item.show');
