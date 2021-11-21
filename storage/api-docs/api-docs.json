@@ -2,28 +2,53 @@
     "openapi": "3.0.0",
     "info": {
         "title": "Shelf API",
-        "version": "0.0.1"
+        "description": "RestAPI based on building a shelf of products using the VTEX Search API as a database.",
+        "version": "1.0.0"
     },
     "servers": [
         {
-            "url": "http://localhost/api"
+            "url": "http://shelf-api-challenge.herokuapp.com/api/"
         }
     ],
     "paths": {
         "/product": {
             "get": {
+                "tags": [
+                    "Shelf"
+                ],
+                "summary": "Displays the shelf",
+                "description": "This endpoint returns a json with the twelve best sellers in the perfume category.",
                 "responses": {
-                    "201": {
-                        "description": "Display a the shelf list."
+                    "200": {
+                        "description": "Successful operation."
                     }
                 }
             }
         },
         "/product/{item}": {
             "get": {
+                "tags": [
+                    "Product details"
+                ],
+                "summary": "Find product by its position in the shelf",
+                "description": "This endpoint returns a json with a single product and all its details.",
+                "parameters": [
+                    {
+                        "name": "item",
+                        "in": "path",
+                        "description": "Product to return",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
                 "responses": {
                     "201": {
-                        "description": "Display item details."
+                        "description": "Successful operation."
+                    },
+                    "404": {
+                        "description": "The requested resource does not exist."
                     }
                 }
             }
