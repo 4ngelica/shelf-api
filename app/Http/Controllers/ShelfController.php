@@ -9,7 +9,7 @@ use Illuminate\Support\Arr;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use App\Models\Shelf;
-
+use Exception;
 
 class ShelfController extends Controller
 {
@@ -23,15 +23,16 @@ class ShelfController extends Controller
     $this->shelf = $shelf;
   }
 
+
   /**
-  * @OA\Get(
-  *   path="/product",
-  *   tags={"Shelf"},
-  *   summary="Displays the shelf",
-  *   description="This endpoint returns a json with the twelve best sellers in the perfume category.",
-  *   @OA\Response(response="200", description="Successful operation.")
-  * )
-  */
+    * @OA\Get(
+    *   path="/product",
+    *   tags={"Shelf"},
+    *   summary="Displays the shelf",
+    *   description="This endpoint returns a json with the twelve best sellers in the perfume category.",
+    *   @OA\Response(response="200", description="Successful operation.")
+    * )
+    */
 
   /**
   * @return JsonResponse
@@ -47,7 +48,7 @@ class ShelfController extends Controller
   * @OA\Get(
   *   path="/product/{item}",
   *   tags={"Product details"},
-  *   summary="Find product by its shelf position",
+  *   summary="Find product by its position in the shelf",
   *   description="This endpoint returns a json with a single product and all its details.",
   *   @OA\Parameter(
   *     description="Product to return",
@@ -74,12 +75,15 @@ class ShelfController extends Controller
   */
   public function show(Int $item): JsonResponse
   {
-    if($item < 1 || $item > 12){
-      return response()->json(['error'=>'The requested resource does not exist.'], 404);
-    }
+    try{
+      $shelf_item = $this->handleRequest($item);
 
-    $shelf_item = $this->handleRequest($item);
-    return response()->json($shelf_item, 201);
+      return response()->json($shelf_item, 201);
+    } catch (Exception $e) {
+        return response()->json(
+          ['error' => 'The requested resource does not exist.'],
+          JsonResponse::HTTP_NOT_FOUND);
+      }
   }
 
   /**
