@@ -22,17 +22,6 @@ class ShelfController extends Controller
     $this->shelf = $shelf;
   }
 
-
-  /**
-  * @OA\Get(
-  *   path="/shelf",
-  *   tags={"Shelf"},
-  *   summary="Displays the shelf",
-  *   description="This endpoint returns a json with the twelve best sellers in the perfume category.",
-  *   @OA\Response(response="200", description="Successful operation.")
-  * )
-  */
-
   /**
   * @return JsonResponse
   * @author Angélica Nunes
@@ -42,26 +31,6 @@ class ShelfController extends Controller
     $shelf_list = $this->handleRequest();
     return response()->json($shelf_list, JsonResponse::HTTP_OK);
   }
-
-  /**
-  * @OA\Get(
-  *   path="/shelf/{item}",
-  *   tags={"Shelf details"},
-  *   summary="Find product by its position in the shelf",
-  *   description="This endpoint returns a json with a single product and all its details.",
-  *   @OA\Parameter(
-  *     description="Product to return",
-  *       in="path",
-  *       name="item",
-  *       required=true,
-  *       @OA\Schema(
-  *         type="integer",
-  *       )
-  *    ),
-  *    @OA\Response(response="201", description="Successful operation."),
-  *    @OA\Response(response="404", description="The requested resource does not exist.")
-  * )
-  */
 
   /**
   * Responds to a GET request into the
