@@ -25,11 +25,13 @@ Obs: é necessário acessar via http devido a uma <a href="https://github.com/Da
 
 A ordenação foi realizada diretamente na requisição da API de busca. Foi utilizado o parâmetro <i> O=OrderByPriceDESC</i>, enviado como filtro na URL da requisição:
 
-http://epocacosmeticos.vtexcommercestable.com.br/api/catalog_system/pub/products/search/?O=OrderByTopSaleDESC
+`$url = epocacosmeticos.vtexcommercestable.com.br/api/catalog_system/pub/products/search/?O=OrderByTopSaleDESC`
 
 Além disso, o parâmetro de busca foi omitido na URL, para não limitar a query da busca. A alternativa utilizada foi enviar no body da requisição o parâmetro <i>'fq'</i>, que indica a categoria dos produtos buscados. Portanto, a busca foi realizada dentre os produtos classificados na categoria Perfumes (1000001).
 
 Para limitar a busca em 12 resultados, foram utilizados os parâmetros <i>_from</i> e <i>_to</i>.
+
+O resultado da requisição deve conter os mesmos 12 primeiros produtos exibidos na página da <a href="https://www.epocacosmeticos.com.br/perfumes?PS=16&O=OrderByTopSaleDESC">Época Cosméticos</a>, ao acessar Perfumes e ordenar pelos mais vendidos.
 
 <p align="center"><img width="80%" src="https://raw.githubusercontent.com/4ngelica/shelf-api/master/src/public/assets/VennDiagram.jpg"></p>
 
